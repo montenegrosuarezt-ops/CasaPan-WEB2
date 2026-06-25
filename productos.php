@@ -52,14 +52,31 @@ mysqli_query(
 <div class="nav-actions">
 
 <?php
+
 if(isset($_SESSION["id_usuario"]))
 {
-echo "<span>Hola, ".$_SESSION["nombre"]."</span>";
-echo '<a href="auth/logout.php" class="btn">Salir</a>';
+    echo "<span>Hola, ".$_SESSION["nombre"]."</span>";
+
+    if($_SESSION["id_rol"] == 1)
+    {
+        echo '<a href="admin/dashboard.php" class="btn">Panel Admin</a>';
+    }
+
+    if($_SESSION["id_rol"] == 2)
+    {
+        echo '<a href="gerente/dashboard.php" class="btn">Panel Gerente</a>';
+    }
+
+    if($_SESSION["id_rol"] == 3)
+    {
+        echo '<a href="cliente/dashboard.php" class="btn">Mi Cuenta</a>';
+    }
+
+    echo '<a href="auth/logout.php" class="btn">Salir</a>';
 }
 else
 {
-echo '<a href="auth/login.php" class="btn">Login</a>';
+    echo '<a href="auth/login.php" class="btn">Login</a>';
 }
 ?>
 

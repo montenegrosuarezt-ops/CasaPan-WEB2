@@ -152,39 +152,42 @@ alt="CASAPAN">
 <div class="nav-actions">
 
 <?php
-if (isset($_SESSION["id_usuario"]))
+
+if(isset($_SESSION["id_usuario"]))
 {
-?>
+    echo "<span>Hola, ".$_SESSION["nombre"]."</span>";
 
-<span>
-Hola,
-<?php echo $_SESSION["nombre"]; ?>
-</span>
+    if($_SESSION["id_rol"] == 1)
+    {
+        echo '<a href="admin/dashboard.php" class="btn">Panel Admin</a>';
+    }
 
-<a
-href="auth/logout.php"
-class="btn">
-Salir </a>
+    if($_SESSION["id_rol"] == 2)
+    {
+        echo '<a href="gerente/dashboard.php" class="btn">Panel Gerente</a>';
+    }
 
-<?php
+    if($_SESSION["id_rol"] == 3)
+    {
+        echo '<a href="cliente/dashboard.php" class="btn">Mi Cuenta</a>';
+    }
+
+    echo '<a href="auth/logout.php" class="btn">Salir</a>';
 }
 else
 {
-?>
-
-<a
-href="auth/login.php"
-class="btn">
-Login </a>
-
-<?php
+    echo '<a href="auth/login.php" class="btn">Login</a>';
 }
 ?>
+
+<button id="dark-mode-toggle-2" class="btn-icon">
+🔆
+</button>
 
 <a
 href="carrito/carrito.php"
 class="btn btn-primary">
-Ver carrito </a>
+Carrito </a>
 
 </div>
 

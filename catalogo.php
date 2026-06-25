@@ -155,33 +155,49 @@ href="css/styles.css">
 
 <div class="nav-actions">
 
-<?php
-if(isset($_SESSION["id_usuario"]))
-{
-echo "<span>Hola, ".$_SESSION["nombre"]."</span>";
-echo '<a href="auth/logout.php" class="btn">Salir</a>';
-}
-else
-{
-echo '<a href="auth/login.php" class="btn">Login</a>';
-}
-?>
+    <?php
 
-<button id="dark-mode-toggle-3" class="btn-icon">🔆</button>
+    if(isset($_SESSION["id_usuario"]))
+    {
+        echo "<span>Hola, ".$_SESSION["nombre"]."</span>";
 
-&nbsp;&nbsp;
+        if($_SESSION["id_rol"] == 1)
+        {
+            echo '<a href="admin/dashboard.php" class="btn">Panel Admin</a>';
+        }
 
-<a
-href="carrito/carrito.php"
-class="btn btn-primary">
+        if($_SESSION["id_rol"] == 2)
+        {
+            echo '<a href="gerente/dashboard.php" class="btn">Panel Gerente</a>';
+        }
 
-Carrito
-(
-<?php echo obtenerCantidadCarrito(); ?>
-)
+        if($_SESSION["id_rol"] == 3)
+        {
+            echo '<a href="cliente/dashboard.php" class="btn">Mi Cuenta</a>';
+        }
 
-</a>
+        echo '<a href="auth/logout.php" class="btn">Salir</a>';
+    }
+    else
+    {
+        echo '<a href="auth/login.php" class="btn">Login</a>';
+    }
+    ?>
 
+    <button id="dark-mode-toggle-3" class="btn-icon">
+    🔆
+    </button>
+
+    <a
+    href="carrito/carrito.php"
+    class="btn btn-primary">
+
+    Carrito
+    (
+    <?php echo obtenerCantidadCarrito(); ?>
+    )
+
+    </a>
 
 </div>
 
@@ -398,6 +414,8 @@ function(e)
 );
 
 </script>
+
+<script src="js/script.js"></script>
 
 </body>
 </html>

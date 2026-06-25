@@ -32,6 +32,10 @@ Bienvenido <?php echo $_SESSION["nombre"]; ?>
 
 <div class="cards">
 
+<a href="../admin/usuarios.php" class="card">
+<h3>Gestionar Usuarios</h3>
+</a>
+
 <a href="pedidos.php" class="card">
 <h3>Gestionar Pedidos</h3>
 </a>

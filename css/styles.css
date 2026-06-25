@@ -144,12 +144,13 @@ p {
 }
 
 /* ------------ CARDS ------------ */
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
-  width: 100%;
-  margin-top: 20px;
+.cards
+{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+    width:100%;
+    margin-top:20px;
 }
 
 .card,
@@ -209,11 +210,12 @@ p {
   margin-bottom: 50px;
 }
 
-.gallery-grid {
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 12px;
+.gallery-grid
+{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:12px;
+    width:100%;
 }
 
 .gallery-grid img {
@@ -317,7 +319,7 @@ p {
   }
 }
 
-.catalog-grid {
+.catalogo-grid {
   display: grid !important;
   grid-template-columns: repeat(4, 1fr) !important;
   gap: 20px !important;
@@ -340,7 +342,7 @@ table
 table th
 {
     background:#ffb347;
-    color:#000;
+    color:black;
     padding:12px;
 }
 
@@ -349,29 +351,34 @@ table td
     padding:12px;
 }
 
-table a
-{
-    color:#ffb347;
-    text-decoration:none;
-}
-
-table a:hover
-{
-    text-decoration:underline;
-}
-
 .card
 {
-    box-shadow:0 0 10px rgba(0,0,0,.3);
+    box-shadow:
+    0 0 10px rgba(0,0,0,.3);
 }
 
 main
 {
-    max-width:1200px;
-    margin:auto;
+    width:100%;
 }
 
-/* ---------- ADMIN ---------- */
+main:not(.admin-main)
+{
+    max-width:none;
+}
+
+.carrito-table th,
+.carrito-table td
+{
+    padding:15px;
+    text-align:center;
+    border-bottom:1px solid #333;
+}
+
+.carrito-table th
+{
+    background:#1f2937;
+}
 
 .admin-container
 {
@@ -382,13 +389,11 @@ main
 
 .admin-card
 {
-    background:#141518;
+    background:#111827;
+    border-radius:12px;
     padding:25px;
-    border-radius:14px;
-    box-shadow:0 0 15px rgba(0,0,0,.35);
+    box-shadow:0 4px 20px rgba(0,0,0,.3);
 }
-
-/* ---------- CARRITO ---------- */
 
 .carrito-table
 {
@@ -396,7 +401,8 @@ main
     border-collapse:collapse;
     margin-top:20px;
     background:#141518;
-    table-layout:fixed;
+    border-radius:12px;
+    overflow:hidden;
 }
 
 .carrito-table th
@@ -410,13 +416,56 @@ main
 {
     padding:15px;
     text-align:center;
+}
+
+.carrito-acciones
+{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+    flex-wrap:nowrap;
+}
+
+.carrito-acciones .btn
+{
+    white-space:nowrap;
+    min-width:50px;
+}
+
+.admin-card
+{
+    background:#141518;
+    padding:25px;
+    border-radius:14px;
+    box-shadow:0 0 15px rgba(0,0,0,.35);
+}
+
+table a
+{
+    color:#ffb347;
+    text-decoration:none;
+}
+
+table a:hover
+{
+    text-decoration:underline;
+}
+
+.carrito-table
+{
+    width:100%;
+    margin-top:20px;
+}
+
+.carrito-table td
+{
     vertical-align:middle;
-    border-bottom:1px solid #333;
 }
 
 .carrito-table th:nth-child(1)
 {
-    width:30%;
+    width:35%;
 }
 
 .carrito-table th:nth-child(2)
@@ -436,23 +485,31 @@ main
 
 .carrito-table th:nth-child(5)
 {
-    width:30%;
+    width:25%;
+} 
+
+@media(max-width:1000px)
+{
+    .cards
+    {
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .gallery-grid
+    {
+        grid-template-columns:repeat(3,1fr);
+    }
 }
 
-.carrito-acciones
+@media(max-width:700px)
 {
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:6px;
-    flex-wrap:nowrap;
-}
+    .cards
+    {
+        grid-template-columns:1fr;
+    }
 
-.carrito-acciones .btn
-{
-    padding:6px 10px;
-    min-width:auto;
-    width:auto;
-    white-space:nowrap;
-    font-size:14px;
+    .gallery-grid
+    {
+        grid-template-columns:repeat(2,1fr);
+    }
 }
